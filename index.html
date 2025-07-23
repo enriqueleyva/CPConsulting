@@ -11,71 +11,12 @@
 			rel="stylesheet"
 		/>
 
+		<link rel="stylesheet" href="css/style.css" />
+		script
+
 		<!-- GSAP & ScrollTrigger -->
 		<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-
-		<!-- Base styles -->
-		<style>
-			body {
-				font-family: "Inter", Arial, sans-serif;
-			}
-			section {
-				padding: 5rem 0;
-			}
-			.btn-primary {
-				background: #0055a4;
-				border: none;
-			}
-			.btn-primary:hover {
-				background: #003f7d;
-			}
-			.service-icon {
-				width: 56px;
-				height: 56px;
-				object-fit: contain;
-			}
-			.navbar-brand {
-				width: 150px;
-			}
-			.btn-outline-primary:hover {
-				background-color: #0055a4;
-				color: white;
-			}
-		</style>
-		<style>
-			/* Thin blue underline on navbar links */
-			.navbar-nav .nav-link {
-				position: relative; /* para colocar el pseudo-elemento */
-				padding-bottom: 0.25rem; /* ligera separación del texto */
-			}
-
-			.navbar-nav .nav-link::after {
-				content: "";
-				position: absolute;
-				left: 0;
-				bottom: 0; /* pegado al borde inferior del link */
-				width: 0;
-				height: 2px; /* grosor de la línea */
-				background: #0055a4; /* color azul corporativo */
-				transition: width 0.25s ease-out;
-			}
-
-			.navbar-nav .nav-link:hover::after,
-			.navbar-nav .nav-link.active::after,
-			.navbar-nav .nav-link:focus::after {
-				width: 100%; /* línea se expande de izquierda a derecha */
-			}
-
-			/* Utility class for subtle shadow */
-			.service-card {
-				transition: transform 0.25s ease, box-shadow 0.25s ease;
-			}
-			.service-card:hover {
-				transform: translateY(-4px) scale(1.04);
-				box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
-			}
-		</style>
 	</head>
 	<body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="80">
 		<!-- ===== NAV ===== -->
@@ -118,23 +59,20 @@
 			</div>
 		</nav>
 
-		<!-- ===== HERO ===== -->
+		<!-- ===== HERO (CSS-only artwork) ===== -->
 		<header
 			id="hero"
-			class="vh-100 d-flex align-items-center"
-			style="background: url('img/banner.png') center/cover no-repeat"
+			class="hero d-flex flex-column justify-content-center text-center"
 		>
-			<!-- <div class="container text-center text-white">
-				<h1 class="display-4 fw-bold mb-3">Clarity. Strategy. Results.</h1>
-				<p class="lead mb-4 col-lg-6 mx-auto">
-					We empower organizations to unlock strategic clarity and accelerate
-					results through tailored advisory solutions driven by insight,
-					collaboration, and impact.
-				</p>
-				<a href="#contact" class="btn btn-lg btn-primary"
-					>Book a Free Discovery Call</a
-				>
-			</div> -->
+			<!-- Logotipo (sustituye la ruta) -->
+			<img
+				src="img/logo.png"
+				alt="GP Consulting Group logo"
+				class="hero-logo mx-auto mb-3"
+			/>
+
+			<!-- Tagline -->
+			<p class="lead tagline mb-0">Clarity. Strategy. Results.</p>
 		</header>
 
 		<!-- ===== ABOUT ===== -->
@@ -378,46 +316,5 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 		<!-- GSAP Animations -->
-		<script>
-			gsap.registerPlugin(ScrollTrigger);
-
-			// Generic fade-up for every section (except hero)
-			gsap.utils.toArray("section").forEach((section) => {
-				if (section.id === "hero") return;
-				gsap.from(section, {
-					opacity: 0,
-					y: 50,
-					duration: 0.8,
-					ease: "power2.out",
-					scrollTrigger: {
-						trigger: section,
-						start: "top 80%",
-					},
-				});
-			});
-
-			// Parallax effect on hero text
-			gsap.from("#hero h1", { yPercent: 20, opacity: 0, duration: 1 });
-			gsap.from("#hero p", {
-				yPercent: 40,
-				opacity: 0,
-				duration: 1,
-				delay: 0.2,
-			});
-
-			// Fade-up entrance once, when section scrolls into view
-			gsap.from(".service-card", {
-				opacity: 0,
-				y: 20,
-				duration: 0.7,
-				ease: "power2.out",
-				stagger: 0.15,
-				scrollTrigger: {
-					trigger: "#services",
-					start: "top 85%",
-					toggleActions: "play none none none",
-				},
-			});
-		</script>
 	</body>
 </html>

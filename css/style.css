@@ -1,0 +1,248 @@
+body {
+    font-family: "Inter", Arial, sans-serif;
+}
+
+section {
+    padding: 5rem 0;
+}
+
+.btn-primary {
+    background: #0055a4;
+    border: none;
+}
+
+.btn-primary:hover {
+    background: #003f7d;
+}
+
+.service-icon {
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+}
+
+.navbar-brand {
+    width: 150px;
+}
+
+.btn-outline-primary:hover {
+    background-color: #0055a4;
+    color: white;
+}
+
+/* ---------- HERO CANVAS ---------- */
+.hero {
+    position: relative;
+    overflow: hidden;
+    min-height: 78vh;
+    /* adjust if you need more/less impact */
+    background: #fff;
+    color: #002648;
+}
+
+/* ---------- ABSTRACT SHAPES (two layered circles) ---------- */
+.hero::before,
+.hero::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+/* big bottom-left curve */
+.hero::before {
+    width: 150vmax;
+    height: 150vmax;
+    left: -75vmax;
+    bottom: -75vmax;
+    background: radial-gradient(circle at 30% 30%,
+            rgba(0, 86, 140, 0.08) 0 40%,
+            transparent 41%);
+}
+
+/* light top-right curve */
+.hero::after {
+    width: 80vmax;
+    height: 80vmax;
+    right: -40vmax;
+    top: -40vmax;
+    background: radial-gradient(circle at 70% 30%,
+            rgba(0, 86, 140, 0.06) 0 50%,
+            transparent 51%);
+}
+
+/* ---------- BRAND BLOCK ---------- */
+.brand-block {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    line-height: 1;
+}
+
+.gp {
+    font-size: clamp(3rem, 10vw, 8rem);
+    /* fluid size */
+    font-weight: 800;
+}
+
+.divider {
+    width: 4px;
+    height: clamp(3rem, 10vw, 8rem);
+    background: #0091ff;
+    /* same blue used in UI */
+}
+
+.cg {
+    font-size: clamp(1.25rem, 4.2vw, 2.75rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+}
+
+.tagline {
+    font-size: clamp(1rem, 2.6vw, 1.5rem);
+    margin-top: 1.25rem;
+}
+
+/* ---------- MOBILE TWEAKS ---------- */
+@media (max-width: 575.98px) {
+    .hero {
+        min-height: auto;
+        /* no huge gap on phones  */
+        padding: 5rem 0 4rem;
+        /* breathing room         */
+    }
+
+    .brand-block {
+        flex-direction: column;
+        /* stack logo elements    */
+        align-items: flex-start;
+    }
+
+    .divider {
+        display: none;
+        /* optional: hide blue bar on xs */
+    }
+}
+
+/* Thin blue underline on navbar links */
+.navbar-nav .nav-link {
+    position: relative;
+    /* para colocar el pseudo-elemento */
+    padding-bottom: 0.25rem;
+    /* ligera separación del texto */
+}
+
+.navbar-nav .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    /* pegado al borde inferior del link */
+    width: 0;
+    height: 2px;
+    /* grosor de la línea */
+    background: #0055a4;
+    /* color azul corporativo */
+    transition: width 0.25s ease-out;
+}
+
+.navbar-nav .nav-link:hover::after,
+.navbar-nav .nav-link.active::after,
+.navbar-nav .nav-link:focus::after {
+    width: 100%;
+    /* línea se expande de izquierda a derecha */
+}
+
+/* Utility class for subtle shadow */
+.service-card {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-4px) scale(1.04);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+}
+
+/* ---------- HERO CANVAS ---------- */
+.hero {
+    position: relative;
+    overflow: hidden;
+    background: #fff;
+    min-height: 75vh;
+    /* impacto en desktop */
+    color: #002648;
+}
+
+/* ---------- SEMICIRCLES / OVERLAYS ---------- */
+.hero::before,
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+/* Conjunto de arcos inferior-izquierdo (3 gradientes superpuestos) */
+.hero::before {
+    background: radial-gradient(circle at -25% 125%,
+            rgba(0, 86, 140, 0.18) 0 30%,
+            transparent 31%),
+        radial-gradient(circle at -15% 115%,
+            rgba(0, 86, 140, 0.12) 0 45%,
+            transparent 46%),
+        radial-gradient(circle at 0% 100%,
+            rgba(0, 86, 140, 0.08) 0 60%,
+            transparent 61%);
+}
+
+/* Arco superior-derecho */
+.hero::after {
+    background: radial-gradient(circle at 110% -10%,
+            rgba(0, 86, 140, 0.08) 0 55%,
+            transparent 56%);
+}
+
+/* ---------- ELEMENTS ---------- */
+.hero-logo {
+    width: clamp(200px, 40vw, 540px);
+    /* fluido entre 200-540 px */
+    height: auto;
+}
+
+.tagline {
+    font-size: clamp(1rem, 2.4vw, 1.5rem);
+    font-weight: 500;
+}
+
+/* ---------- MOBILE LAYOUT (≤ 575 px) ---------- */
+@media (max-width: 575.98px) {
+    .hero {
+        /* ocupa 60 % de la pantalla (ajusta a tu gusto) */
+        min-height: 60vh;
+
+        /* centra el contenido en ambas direcciones */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        /* eje Y  */
+        align-items: center;
+        /* eje X  */
+
+        /* elimina el padding superior que empujaba la imagen */
+        padding: 0 1rem;
+    }
+}
+
+/* pointer devices only */
+@media (hover: hover) {
+    .hero-logo {
+        transition: transform 0.35s ease;
+    }
+
+    .hero-logo:hover,
+    .hero-logo:focus-visible {
+        transform: scale(1.05);
+    }
+}
